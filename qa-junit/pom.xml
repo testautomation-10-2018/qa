@@ -14,6 +14,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>qa-junit</artifactId>
+
     <dependencies>
         <!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api -->
         <dependency>
@@ -34,6 +35,5 @@
             <artifactId>junit-jupiter-params</artifactId>
         </dependency>
     </dependencies>
-
 
 </project>
