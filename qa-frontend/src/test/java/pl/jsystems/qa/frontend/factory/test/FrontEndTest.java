@@ -2,7 +2,9 @@ package pl.jsystems.qa.frontend.factory.test;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInfo;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -21,9 +23,10 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class FrontEndTest extends FrontConfig {
 
+//    @Tag("all")
     @Test
-    public void firstFrontTest() {
-
+    public void firstFrontTest(TestInfo testInfo) {
+        System.out.println(testInfo.getDisplayName());
         MainPage mainPage = new MainPage(driver);
 
         assertTrue(driver.getTitle().contains("WordPress.com"));
