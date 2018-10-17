@@ -12,5 +12,6 @@ public class Configuration {
     public static final String WORDPRESS_URL = ENV.getString("baseUrl");
     public static final String WORDPRESS_LOGIN = ENV.getString("login");
     public static final String WORDPRESS_PASSWORD = ENV.getString("password");
+    public static final String REMOTE_URL = ENV.getString("remoteUrl");
 
 }
