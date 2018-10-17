@@ -60,10 +60,6 @@ public class FrontConfig {
             }
         }
 
-
-//        driver = new RemoteWebDriver(new URL(Configuration.REMOTE_URL), capabilities);
-
-
         driver.manage().deleteAllCookies();
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 
