@@ -73,7 +73,6 @@ public class WindowSteps {
             }
         }
 
-
         System.out.println("sdfsdfsdfsdf");
         driver.switchTo().window(secondTestWindowHandle);
 
