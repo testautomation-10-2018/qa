@@ -1,24 +1,36 @@
 #!groovy
 
+properties([
+    parameters([
+        choice(choices: 'dev\ntest', description: 'this environment will be tested', name: 'ENVIRONMENT'),
+        string(defaultValue: '*', description: 'surefire expression limiting test to run', name: 'test', trim: false),
+        [$class: 'GitParameterDefinition', branch: '', branchFilter: '.*', defaultValue: 'origin/develop', description: 'the tests will run from this branch',
+        name: 'branch', quickFilterEnabled: true, selectedValue: 'DEFAULT', sortMode: 'NONE', tagFilter: '*', type: 'PT_BRANCH']
+    ])
+])
+
 node('master') {
+
     stage('checkout') {
         checkout([
             $class: 'GitSCM',
-            branches:[[name: "${params.branch}"]],
+            branches: [[name: "${params.branch}"]],
             doGenerateSubmoduleConfigurations: false,
             extensions: [[$class: 'CleanBeforeCheckout']],
-            usrRemoreConfigs: [[credentialsId: 'testautomation-10-2018', url: 'https://github.com/testautomation-10-2018/qa.git']]
+            userRemoteConfigs: [[credentialsId: 'testautomation-10-2018', url: 'https://github.com/testautomation-10-2018/qa.git']]
         ])
     }
-    stage('junit-test') {
-      env.JAVA_HOME="${tool name: 'oracle-jdk-8', type: 'jdk'}"
-      env.PATH="${env.JAVA_HOME}/bin:${env.PATH}"
-      try {
-        sh "${tool name: 'apache-maven-3', type:'maven'}/bin/mvn clean test --projects qa-junit --also-make -Denvironment=${params.environment} -P jenkins"
-      } finally {
-        junit 'qa-junit/target/surefire-reports/*.xml'
-        archiveArtifacts artifacts: 'qa-junit/target/test-reports/**/*'
-        allure jdk: 'oracle-jdk-8', results: [[path: 'qa-junit/terget/allure-results']]
-      }
+
+    stage('api-tests') {
+        env.JAVA_HOME="${tool name: 'oracle-jdk-8', type: 'jdk'}"
+        env.PATH="${env.JAVA_HOME}/bin:${env.PATH}"
+        try {
+            sh "${tool name: 'apache-maven-3', type: 'maven'}/bin/mvn clean test --projects qa-junit --also-make -DENVIRONMENT=${params.ENVIRONMENT} -P jenkins"
+        } finally {
+            junit 'qa-junit/target/surefire-reports/*.xml'
+            archiveArtifacts artifacts: 'qa-junit/target/test-reports/**/*'
+            allure jdk: 'oracle-jdk-8', results: [[path: 'qa-junit/target/allure-results']]
+        }
     }
+
 }
