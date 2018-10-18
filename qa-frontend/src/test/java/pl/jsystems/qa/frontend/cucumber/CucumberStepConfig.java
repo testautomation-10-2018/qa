@@ -18,9 +18,6 @@ public class CucumberStepConfig {
 
     public WebDriver driver = null;
     public String baseUrl;
-    private StringBuffer verificationErrors = new StringBuffer();
-    public String id = "0";
-
 
 //    @Before
     public WebDriver setUp() {
@@ -32,6 +29,7 @@ public class CucumberStepConfig {
         if (driver == null) {
             driver = new ChromeDriver(chromeOptions);
         }
+
         prepareDriver();
         return driver;
     }
@@ -59,11 +57,6 @@ public class CucumberStepConfig {
             scenario.write("Scenario failed");
         }
         System.out.println("\n"+status+" End of: " + scenario.getName() + " scenario.");
-        String verificationErrorString = verificationErrors.toString();
-        if (!"".equals(verificationErrorString)) {
-            fail(verificationErrorString);
-
-        }
             driver.quit();
             driver = null;
     }
