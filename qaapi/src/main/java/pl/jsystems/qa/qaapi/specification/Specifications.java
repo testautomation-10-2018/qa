@@ -15,4 +15,21 @@ public class Specifications {
                 .setBasePath("/v2")
                 .build();
     }
+
+    public static RequestSpecification requestSpecBuilderAuthori(String auth) {
+        return new RequestSpecBuilder()
+                .addHeader("Authorise", "Apikey, " + auth)
+                .setContentType(ContentType.JSON)
+                .setBaseUri(Configuration.BASE_URL)
+                .setBasePath("/v2")
+                .build();
+    }
+
+    public static RequestSpecification fakeAzureSpecBuilder() {
+        return new RequestSpecBuilder()
+                .setContentType(ContentType.JSON)
+                .setBaseUri("http://fakerestapi.azurewebsites.net")
+                .build();
+    }
+
 }
