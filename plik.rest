@@ -1,0 +1,8 @@
+GET http://mocky.io/v2/5a6b69ec3100009d211b8aeb
+Content-Type: application/json
+Accept: application/x-www-form-urlencoded
+
+{
+
+}
+###

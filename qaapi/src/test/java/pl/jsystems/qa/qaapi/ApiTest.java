@@ -3,12 +3,14 @@ package pl.jsystems.qa.qaapi;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.restassured.RestAssured;
-import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
+import org.aspectj.lang.annotation.After;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import pl.jsystems.qa.qaapi.dbservice.UserDao;
-import pl.jsystems.qa.qaapi.jdbiservice.UserJdbiService;
+import pl.jsystems.qa.qaapi.databases.dbservice.UserDao;
+import pl.jsystems.qa.qaapi.databases.jdbiservice.UserJdbiService;
 import pl.jsystems.qa.qaapi.model.*;
 import pl.jsystems.qa.qaapi.model.error.ErrorResponse;
 import pl.jsystems.qa.qaapi.service.UserService;
@@ -21,15 +23,22 @@ import java.util.List;
 import static org.awaitility.Awaitility.await;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-import static org.hamcrest.Matchers.empty;
 import static org.hamcrest.Matchers.not;
-import static org.hamcrest.Matchers.stringContainsInOrder;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @DisplayName("Api tests")
 public class ApiTest {
+
+    @BeforeEach
+    public void before() {
+
+    }
+    @AfterEach
+    public void after() {
+
+    }
 
     @Test
     @DisplayName("First rest assured test")
@@ -40,7 +49,7 @@ public class ApiTest {
                 .when()
 //                .get("http://www.mocky.io/v2/5a6b69ec3100009d211b8aeb")
                 .get("/5a6b69ec3100009d211b8aeb")
-                .then()
+                .then().log().all()
                 .assertThat()
                 .statusCode(200)
                 .body("name", equalTo("Piotr"))
@@ -78,7 +87,7 @@ public class ApiTest {
 //
 //        List<User> users = jsonPath.getList("", User.class);
         List<User> users = UserService.getUserList();
-
+//"{\"id":1,\"name\":\"}"
         assertThat(users.get(0).imie, equalTo("Piotr"));
         assertThat(users.get(0).nazwisko, equalTo("Kowalski"));
         assertThat(users.get(0).device.get(0).type, equalTo("computer"));

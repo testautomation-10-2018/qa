@@ -1,4 +1,4 @@
-package pl.jsystems.qa.qaapi.dbservice;
+package pl.jsystems.qa.qaapi.databases.dbservice;
 
 import pl.jsystems.qa.qaapi.confiduration.Configuration;
 

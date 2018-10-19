@@ -11,10 +11,9 @@ import cucumber.api.CucumberOptions;
         plugin = {"html:target/cucumber-html-report", "rerun:target/rerun.txt"},
         tags = {
                 "@window",
-//                "@windowtest"
+//                "@windowtest",
+                "~@inny",
         }
 )
 public class RunTest {
-
-
 }

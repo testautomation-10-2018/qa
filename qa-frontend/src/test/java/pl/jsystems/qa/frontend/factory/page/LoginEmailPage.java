@@ -1,5 +1,6 @@
 package pl.jsystems.qa.frontend.factory.page;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -13,7 +14,7 @@ public class LoginEmailPage extends Basepage{
 
     public LoginEmailPage(WebDriver driver) {
         super(driver);
-//        this.driver = driver;
+        this.driver = driver;
         PageFactory.initElements(driver, this);
     }
 

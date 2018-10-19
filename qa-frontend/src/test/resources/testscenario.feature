@@ -6,3 +6,9 @@ Feature: Test of windows switch to
     When User press link
     Then User is switch to other window
 
+  @window, @inny
+  Scenario: Switch to other window
+    Given User is one main page
+    When User press link
+    Then User is switch to other window
+    And cos

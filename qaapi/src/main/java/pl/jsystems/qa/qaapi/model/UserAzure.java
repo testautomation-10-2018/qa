@@ -13,4 +13,6 @@ public class UserAzure {
     @JsonProperty(value = "Password")
     public String password;
 
+
+
 }

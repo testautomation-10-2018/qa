@@ -1,4 +1,4 @@
-package pl.jsystems.qa.qaapi.dbservice;
+package pl.jsystems.qa.qaapi.databases.dbservice;
 
 import pl.jsystems.qa.qaapi.model.UserDBTest;
 
@@ -47,6 +47,7 @@ public class UserDao {
                 testUser.setSurname(wynik.getString(3));
                 testUsers.add(testUser);
             }
+
             wynik.close();
             statement.close();
         } catch (Exception ex) {

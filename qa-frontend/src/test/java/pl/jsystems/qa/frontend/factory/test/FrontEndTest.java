@@ -15,6 +15,7 @@ import pl.jsystems.qa.frontend.Configuration;
 import pl.jsystems.qa.frontend.factory.FrontConfig;
 import pl.jsystems.qa.frontend.factory.page.*;
 
+import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -26,6 +27,7 @@ public class FrontEndTest extends FrontConfig {
 //    @Tag("all")
     @Test
     public void firstFrontTest(TestInfo testInfo) {
+
         System.out.println(testInfo.getDisplayName());
         MainPage mainPage = new MainPage(driver);
 

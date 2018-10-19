@@ -1,4 +1,4 @@
-package pl.jsystems.qa.qaapi.jdbiservice;
+package pl.jsystems.qa.qaapi.databases.jdbiservice;
 
 import org.jdbi.v3.core.mapper.reflect.ColumnName;
 

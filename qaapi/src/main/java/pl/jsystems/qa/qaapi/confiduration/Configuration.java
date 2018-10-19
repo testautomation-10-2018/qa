@@ -16,4 +16,5 @@ public class Configuration {
     public static final String DB_USER = ENV.getString("dbUser");
     public static final String DB_PASSWORD = ENV.getString("dbPassword");
 
+
 }

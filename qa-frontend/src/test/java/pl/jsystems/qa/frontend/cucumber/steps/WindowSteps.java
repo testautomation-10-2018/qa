@@ -1,5 +1,7 @@
 package pl.jsystems.qa.frontend.cucumber.steps;
 
+import cucumber.api.PendingException;
+import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -87,5 +89,11 @@ public class WindowSteps {
 
 
         assertTrue(true);
+    }
+
+    @And("^cos$")
+    public void cos() throws Throwable {
+        // Write code here that turns the phrase above into concrete actions
+        throw new PendingException();
     }
 }

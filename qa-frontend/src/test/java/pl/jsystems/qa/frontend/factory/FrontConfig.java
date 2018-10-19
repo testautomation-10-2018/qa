@@ -35,20 +35,26 @@ public class FrontConfig {
     @BeforeEach
     public void setUp() throws MalformedURLException {
 
-//        ChromeOptions chromeOptions = new ChromeOptions();
-//        chromeOptions.addArguments("--start-maximized");
 
 //        WebDriver driver = new ChromeDriver(chromeOptions);
 
+                    System.setProperty("webdriver.chrome.driver","D:/Automation/chromedriver.exe");
         DesiredCapabilities capabilities = DesiredCapabilities.chrome();
         capabilities.setBrowserName("chrome");
         capabilities.setPlatform(Platform.WIN10);
 
+//        ChromeOptions chromeOptions = new ChromeOptions();
+//        chromeOptions.addArguments("--start-maximized");
         if (driver == null) {
             try {
-
+//mvn clean -Dtest=FrontEndTest#firstFrontTest -DBROWSER=remote
                 if (System.getenv().get("BROWSER").equals("remote")) {
-                    driver = new RemoteWebDriver(new URL(Configuration.REMOTE_URL), capabilities);
+
+//                    cap = DesiredCapabilities.chrome();
+//                    cap.setPlatform(org.openqa.selenium.Platform.WINDOWS);
+//                    browser = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"),cap);
+//                    driver = new RemoteWebDriver(new URL(Configuration.REMOTE_URL), capabilities);
+                    driver = new RemoteWebDriver(new URL("http://192.168.3.137:8383/wd/hub"), capabilities);
                     driver.manage().window().setSize(new Dimension(1920, 1080));
                 } else {
                     driver = new ChromeDriver();

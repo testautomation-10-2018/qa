@@ -1,4 +1,4 @@
-package pl.jsystems.qa.qaapi.jdbiservice;
+package pl.jsystems.qa.qaapi.databases.jdbiservice;
 
 import org.jdbi.v3.sqlobject.config.RegisterConstructorMapper;
 import org.jdbi.v3.sqlobject.statement.SqlQuery;
