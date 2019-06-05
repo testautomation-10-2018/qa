@@ -47,7 +47,7 @@ public class FrontConfig {
 //        chromeOptions.addArguments("--start-maximized");
         if (driver == null) {
             try {
-//mvn clean -Dtest=FrontEndTest#firstFrontTest -DBROWSER=remote
+////mvn clean -Dtest=FrontEndTest#firstFrontTest -DBROWSER=remote
                 if (System.getenv().get("BROWSER").equals("remote")) {
 
 //                    cap = DesiredCapabilities.chrome();
