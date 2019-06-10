@@ -15,6 +15,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class JunitTest {
     String testowyString;
 
+    
+    
     @BeforeEach
     void before() {
         System.out.println("======================Before each");
